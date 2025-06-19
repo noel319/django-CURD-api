@@ -35,13 +35,6 @@ git --version
 git clone <your-repository-url>
 cd schedule_api
 ```
-
-### Option B: Create new project directory
-```bash
-mkdir schedule_api
-cd schedule_api
-```
-
 ## Step 2: Create Virtual Environment
 
 ### Using venv (recommended)
@@ -53,163 +46,15 @@ python -m venv venv
 # On Windows:
 venv\Scripts\activate
 
-# On macOS/Linux:
-source venv/bin/activate
+**Note:** Your terminal prompt should show `(myenv)` when the virtual environment is activated.
+
+
 ```
+## Step 3: Install project dependencies
 
-### Using virtualenv (alternative)
-```bash
-# Install virtualenv if not installed
-pip install virtualenv
-
-# Create virtual environment
-virtualenv venv
-
-# Activate virtual environment
-# On Windows:
-venv\Scripts\activate
-
-# On macOS/Linux:
-source venv/bin/activate
-```
-
-**Note:** Your terminal prompt should show `(venv)` when the virtual environment is activated.
-
-## Step 3: Create Project Structure
-
-If you're starting from scratch, create the following directory structure:
-
-```bash
-# Create main project directories
-mkdir -p schedule_api
-mkdir -p apps/core
-mkdir -p apps/schedules
-mkdir -p apps/authentication
-
-# Create __init__.py files
-touch schedule_api/__init__.py
-touch apps/__init__.py
-touch apps/core/__init__.py
-touch apps/schedules/__init__.py
-touch apps/authentication/__init__.py
-```
-
-## Step 4: Create Requirements File
-
-Create `requirements.txt` with the following content:
-
-```txt
-Django==4.2.7
-djangorestframework==3.14.0
-djangorestframework-simplejwt==5.3.0
-drf-yasg==1.21.7
-python-decouple==3.8
-psycopg2-binary==2.9.9
-django-cors-headers==4.3.1
-coverage==7.3.2
-```
-
-## Step 5: Install Python Dependencies
-
-```bash
-# Upgrade pip first
-pip install --upgrade pip
-
-# Install project dependencies
 pip install -r requirements.txt
-```
 
-**If you encounter issues:**
-- On Windows, you might need to install Microsoft Visual C++ Build Tools
-- On macOS, you might need to install Xcode command line tools: `xcode-select --install`
-- On Linux, you might need to install development packages: `sudo apt-get install python3-dev libpq-dev`
-
-## Step 6: Create Django Project Structure
-
-### Create Django project (if starting fresh)
-```bash
-# Create Django project
-django-admin startproject schedule_api .
-
-# Navigate to project directory
-cd schedule_api
-
-# Create Django apps
-python manage.py startapp core ../apps/core
-python manage.py startapp schedules ../apps/schedules
-python manage.py startapp authentication ../apps/authentication
-```
-
-## Step 7: Environment Configuration
-
-Create a `.env` file in the project root:
-
-```bash
-# Create .env file
-touch .env
-```
-
-Add the following content to `.env`:
-
-```bash
-# Django settings
-SECRET_KEY=django-insecure-development-key-change-in-production-!@#$%^&*()
-DEBUG=True
-ALLOWED_HOSTS=localhost,127.0.0.1,0.0.0.0
-
-# Database settings (SQLite for development)
-# DATABASE_URL=sqlite:///db.sqlite3
-
-# JWT settings (optional - defaults are provided)
-JWT_ACCESS_TOKEN_LIFETIME=60
-JWT_REFRESH_TOKEN_LIFETIME=10080
-
-# CORS settings
-CORS_ALLOWED_ORIGINS=http://localhost:3000,http://127.0.0.1:3000,http://localhost:8000,http://127.0.0.1:8000
-```
-
-## Step 8: Copy Project Files
-
-Copy all the provided code files to their respective locations:
-
-```
-schedule_api/
-├── schedule_api/
-│   ├── __init__.py
-│   ├── settings.py          # Copy provided settings
-│   ├── urls.py              # Copy provided main URLs
-│   ├── wsgi.py             # Django auto-generated
-│   └── asgi.py             # Django auto-generated
-├── apps/
-│   ├── __init__.py
-│   ├── core/
-│   │   ├── __init__.py
-│   │   ├── models.py        # Copy provided core models
-│   │   ├── managers.py      # Copy provided managers
-│   │   └── admin.py         # Copy provided admin config
-│   ├── schedules/
-│   │   ├── __init__.py
-│   │   ├── models.py        # Copy provided schedule models
-│   │   ├── serializers.py   # Copy provided serializers
-│   │   ├── views.py         # Copy provided views
-│   │   ├── urls.py          # Copy provided URLs
-│   │   ├── admin.py         # Copy provided admin config
-│   │   └── tests.py         # Copy provided tests
-│   └── authentication/
-│       ├── __init__.py
-│       ├── serializers.py   # Copy provided auth serializers
-│       ├── views.py         # Copy provided auth views
-│       ├── urls.py          # Copy provided auth URLs
-│       ├── admin.py         # Copy provided admin config
-│       └── tests.py         # Copy provided auth tests
-├── requirements.txt
-├── manage.py               # Django auto-generated
-├── .env                   # Environment variables
-├── .env.example          # Copy provided example
-└── .gitignore            # Copy provided gitignore
-```
-
-## Step 9: Database Setup
+## Step 4: Database Setup
 
 ```bash
 # Create and apply migrations
@@ -221,10 +66,9 @@ python manage.py migrate
 # Create superuser (optional but recommended)
 python manage.py createsuperuser
 ```
-
 Follow the prompts to create a superuser account.
 
-## Step 10: Verify Installation
+## Step 5: Verify Installation
 
 ### Start the development server
 ```bash
@@ -242,7 +86,6 @@ Django version 4.2.7, using settings 'schedule_api.settings'
 Starting development server at http://127.0.0.1:8000/
 Quit the server with CONTROL-C.
 ```
-
 ### Test the installation
 
 1. **Open your browser** and go to: `http://localhost:8000/`
@@ -263,7 +106,7 @@ curl http://localhost:8000/api/v1/auth/register/ \
   }'
 ```
 
-## Step 11: Run Tests
+## Step 6: Run Tests
 
 ```bash
 # Run all tests
@@ -275,7 +118,7 @@ coverage report
 coverage html
 ```
 
-## Step 12: Test with Sample Script
+## Step 7: Test with Sample Script
 
 Run the provided sample API requests:
 

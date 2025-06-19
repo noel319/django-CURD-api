@@ -45,6 +45,13 @@ schedule_api/
 │       ├── views.py      # Auth views
 │       ├── urls.py       # Auth URL routing
 │       └── tests.py      # Auth tests
+│── templates/   
+│   └── swagger/             
+│       ├── redoc.html
+│       └── swagger-ui.html
+├── Dockerfile
+├── docker-compose.yml
+├── Make
 ├── requirements.txt       # Python dependencies
 ├── manage.py             # Django management script
 ├── .env.example          # Environment variables example
@@ -110,7 +117,7 @@ The API will be available at `http://localhost:8000/`
 ## API Documentation
 
 ### Swagger UI
-Access the interactive API documentation at: `http://localhost:8000/`
+Access the interactive API documentation at: `http://localhost:8000/swagger`
 
 ### ReDoc
 Alternative documentation format: `http://localhost:8000/redoc/`
