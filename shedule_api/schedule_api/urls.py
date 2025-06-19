@@ -40,7 +40,7 @@ def api_info(request):
         }
     }, indent=2)
 
-# Swagger schema generator
+
 schema_view = get_schema_view(
     openapi.Info(
         title="Weekly Schedule API",
@@ -54,7 +54,7 @@ schema_view = get_schema_view(
     permission_classes=[permissions.AllowAny],
 )
 
-# Custom Swagger UI view (loads custom HTML)
+
 def custom_swagger_ui(request):
     return render(request, 'swagger/swagger-ui.html', {
         'spec_url': '/swagger.json'
@@ -62,23 +62,17 @@ def custom_swagger_ui(request):
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-
-    # API endpoints
+    
     path('api/v1/auth/', include('apps.authentication.urls')),
     path('api/v1/schedules/', include('apps.schedules.urls')),
-
-    # Info endpoint
+   
     path('api/', api_info, name='api-info'),
-
-    # Schema definition
+    
     re_path(r'^swagger(?P<format>\.json|\.yaml)$', schema_view.without_ui(cache_timeout=0), name='schema-json'),
-
-    # Custom Swagger UI
+    
     path('swagger/', custom_swagger_ui, name='custom-swagger-ui'),
-
-    # Redoc (optional)
+    
     path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
-
-    # Root redirect to Swagger
+    
     path('', custom_swagger_ui),
 ]

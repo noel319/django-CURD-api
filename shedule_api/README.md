@@ -111,7 +111,7 @@ schedule_api/
    ```bash
    python manage.py runserver
    ```
-
+  
 The API will be available at `http://localhost:8000/`
 
 ## API Documentation
@@ -121,6 +121,12 @@ Access the interactive API documentation at: `http://localhost:8000/swagger`
 
 ### ReDoc
 Alternative documentation format: `http://localhost:8000/redoc/`
+
+### Admin
+Alternative documentation format: `http://localhost:8000/redoc/`
+
+name: 123456
+Password:123456
 
 ## JWT Authentication Implementation
 

@@ -162,18 +162,16 @@
         defaultModelsExpandDepth: 1,
         defaultModelExpandDepth: 1,
         requestInterceptor: function(request) {
-          // Add any custom request modifications here
+          // Add custom request here
           return request;
         },
         responseInterceptor: function(response) {
-          // Add any custom response modifications here
+          // Add custom response here
           return response;
         },
-        onComplete: function() {
-          // Custom completion logic
-          console.log("Swagger UI loaded successfully");
+        onComplete: function() {          
+          console.log("Swagger UI loaded successfully");          
           
-          // Add custom authentication helper
           if (typeof(Storage) !== "undefined") {
             const token = localStorage.getItem('access_token');
             if (token) {
@@ -188,8 +186,7 @@
           theme: "agate"
         }
       });
-
-      // Custom function to handle authentication
+      
       window.authenticateAPI = function(token) {
         if (typeof(Storage) !== "undefined") {
           localStorage.setItem('access_token', token);
